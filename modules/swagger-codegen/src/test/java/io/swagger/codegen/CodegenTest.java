@@ -26,7 +26,7 @@ public class CodegenTest {
         Assert.assertEquals(op.consumes.size(), 1);
         Assert.assertEquals(op.consumes.get(0).get("mediaType"), "multipart/form-data");
         Assert.assertTrue(op.hasProduces);
-        Assert.assertEquals(op.allParams.size(), 3);
+        Assert.assertEquals(op.allParams.size(), 4);
         Assert.assertEquals(op.formParams.size(), 2);
 
         final CodegenParameter file = op.formParams.get(1);
@@ -63,7 +63,7 @@ public class CodegenTest {
         Assert.assertTrue(idParam.required);
         Assert.assertNull(idParam.hasMore);
 
-        Assert.assertEquals(op.allParams.size(), 3);
+        Assert.assertEquals(op.allParams.size(), 4);
         Assert.assertEquals(op.formParams.size(), 2);
 
         final CodegenParameter nameParam = op.formParams.get(0);
