@@ -1902,8 +1902,6 @@ public class DefaultCodegen {
         List<CodegenParameter> formParams = new ArrayList<CodegenParameter>();
 
         if (parameters != null) {
-            CodegenParameter exp = generateExtraHttpRequestParam();
-            allParams.add(exp);
             for (Parameter param : parameters) {
                 CodegenParameter p = fromParameter(param, imports);
                 // rename parameters to make sure all of them have unique names
@@ -1944,7 +1942,7 @@ public class DefaultCodegen {
                     cookieParams.add(p.copy());
                 } else if (param instanceof BodyParameter) {
                     bodyParam = p;
-                    bodyParams.add(p.copy());   
+                    bodyParams.add(p.copy());
                 } else if (param instanceof FormParameter) {
                     formParams.add(p.copy());
                 }
@@ -2324,14 +2322,6 @@ public class DefaultCodegen {
         }
 
         postProcessParameter(p);
-        return p;
-    }
-
-    public CodegenParameter generateExtraHttpRequestParam() {
-        CodegenParameter p = CodegenModelFactory.newInstance(CodegenModelType.PARAMETER);
-        p.paramName = "extraHttpRequestParams";
-        p.dataType = "UrlParam[]";
-        p.required = false;
         return p;
     }
 
