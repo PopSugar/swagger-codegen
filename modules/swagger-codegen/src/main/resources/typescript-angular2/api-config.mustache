@@ -1,23 +1,36 @@
-import { RequestOptionsArgs } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-
-export interface HTTPCallConfig {
-  path: string;
-  requestOptions: RequestOptionsArgs;
-  className: string;
-}
+import { HttpParams } from '@angular/common/http';
 
 export interface ExtraParams {
   [key: string]: string;
 }
 
-export interface ApiConfig {
-  basePath: string;
-  pid?: string;
-  requestInterceptor: (config: HTTPCallConfig) => HTTPCallConfig;
-  responseInterceptor?: (responseObservable: Observable<any>) => Observable<any>;
+export type ObserveType = 'body' | 'events' | 'response';
+export type ResponseType = 'arraybuffer' | 'blob' | 'json' | 'text';
+export type Hash = {[key: string]: string | string[]};
+
+export interface RequestOptions {
+  body?: any;
+  headers?: Hash;
+  observe?: ObserveType;
+  params?: Hash | HttpParams;
+  reportProgress?: boolean;
+  responseType?: ResponseType;
+  withCredentials?: boolean;
 }
 
-export interface Api{{appName}}ConfigMap {
-  {{appName}}: ApiConfig;
+export interface HTTPCallConfig {
+  path: string;
+  method: string;
+  requestOptions: RequestOptions;
+  className: string;
+}
+
+export class APIConfiguration {
+  {{appName}}: {
+    basePath: string;
+    pid?: string;
+    requestInterceptor: (config: HTTPCallConfig) => HTTPCallConfig;
+    responseInterceptor?: (responseObservable: Observable<any>, config: HTTPCallConfig) => Observable<any>;
+  }
 }
