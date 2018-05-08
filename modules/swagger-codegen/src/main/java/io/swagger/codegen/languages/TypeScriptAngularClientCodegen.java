@@ -432,7 +432,7 @@ public class TypeScriptAngularClientCodegen extends AbstractTypeScriptClientCode
         if (name.length() == 0) {
             return "DefaultService";
         }
-        return initialCaps(name) + "Service";
+        return initialCaps(name) + "Api";
     }
 
     @Override
@@ -440,7 +440,8 @@ public class TypeScriptAngularClientCodegen extends AbstractTypeScriptClientCode
         if (name.length() == 0) {
             return "default.service";
         }
-        return camelize(name, true) + ".service";
+        String newName = camelize(name, true);
+        return Character.toUpperCase(newName.charAt(0)) + newName.substring(1) + "Api";
     }
 
     @Override
@@ -483,7 +484,7 @@ public class TypeScriptAngularClientCodegen extends AbstractTypeScriptClientCode
     }
 
     private String getApiFilenameFromClassname(String classname) {
-        String name = classname.substring(0, classname.length() - "Service".length());
+        String name = classname.substring(0, classname.length() - "Api".length());
         return toApiFilename(name);
     }
 
