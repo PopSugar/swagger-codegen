@@ -151,8 +151,8 @@ public class TypeScriptAngularClientCodegen extends AbstractTypeScriptClientCode
             Collections.sort(op.allParams, new Comparator<CodegenParameter>() {
                 @Override
                 public int compare(CodegenParameter one, CodegenParameter another) {
-                    boolean oneRequired = one.required == null ? false : one.required;
-                    boolean anotherRequired = another.required == null ? false : another.required;
+                    boolean oneRequired = one.required;
+                    boolean anotherRequired = another.required;
                     if (oneRequired == anotherRequired) return 0;
                     else if (oneRequired) return -1;
                     else return 1;
