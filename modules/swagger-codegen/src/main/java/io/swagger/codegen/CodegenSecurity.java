@@ -7,12 +7,14 @@ public class CodegenSecurity {
     public String name;
     public String type;
     public Boolean hasMore, isBasic, isOAuth, isApiKey;
+    public Map<String, Object> vendorExtensions;
     // ApiKey specific
     public String keyParamName;
     public Boolean isKeyInQuery, isKeyInHeader;
     // Oauth specific
     public String flow, authorizationUrl, tokenUrl;
     public List<Map<String, Object>> scopes;
+    public Boolean isCode, isPassword, isApplication, isImplicit;
 
     @Override
     public String toString() {
@@ -38,6 +40,8 @@ public class CodegenSecurity {
             return false;
         if (isApiKey != null ? !isApiKey.equals(that.isApiKey) : that.isApiKey != null)
             return false;
+        if (vendorExtensions != null ? !vendorExtensions.equals(that.vendorExtensions) : that.vendorExtensions != null)
+            return false;
         if (keyParamName != null ? !keyParamName.equals(that.keyParamName) : that.keyParamName != null)
             return false;
         if (isKeyInQuery != null ? !isKeyInQuery.equals(that.isKeyInQuery) : that.isKeyInQuery != null)
@@ -49,6 +53,14 @@ public class CodegenSecurity {
         if (authorizationUrl != null ? !authorizationUrl.equals(that.authorizationUrl) : that.authorizationUrl != null)
             return false;
         if (tokenUrl != null ? !tokenUrl.equals(that.tokenUrl) : that.tokenUrl != null)
+            return false;
+        if (isCode != null ? !isCode.equals(that.isCode) : that.isCode != null)
+            return false;
+        if (isPassword != null ? !isPassword.equals(that.isPassword) : that.isPassword != null)
+            return false;
+        if (isApplication != null ? !isApplication.equals(that.isApplication) : that.isApplication != null)
+            return false;
+        if (isImplicit != null ? !isImplicit.equals(that.isImplicit) : that.isImplicit != null)
             return false;
         return scopes != null ? scopes.equals(that.scopes) : that.scopes == null;
 
@@ -62,12 +74,17 @@ public class CodegenSecurity {
         result = 31 * result + (isBasic != null ? isBasic.hashCode() : 0);
         result = 31 * result + (isOAuth != null ? isOAuth.hashCode() : 0);
         result = 31 * result + (isApiKey != null ? isApiKey.hashCode() : 0);
+        result = 31 * result + (vendorExtensions != null ? vendorExtensions.hashCode() : 0);
         result = 31 * result + (keyParamName != null ? keyParamName.hashCode() : 0);
         result = 31 * result + (isKeyInQuery != null ? isKeyInQuery.hashCode() : 0);
         result = 31 * result + (isKeyInHeader != null ? isKeyInHeader.hashCode() : 0);
         result = 31 * result + (flow != null ? flow.hashCode() : 0);
         result = 31 * result + (authorizationUrl != null ? authorizationUrl.hashCode() : 0);
         result = 31 * result + (tokenUrl != null ? tokenUrl.hashCode() : 0);
+        result = 31 * result + (isCode != null ? isCode.hashCode() : 0);
+        result = 31 * result + (isPassword != null ? isPassword.hashCode() : 0);
+        result = 31 * result + (isApplication != null ? isApplication.hashCode() : 0);
+        result = 31 * result + (isImplicit != null ? isImplicit.hashCode() : 0);
         result = 31 * result + (scopes != null ? scopes.hashCode() : 0);
         return result;
     }
