@@ -451,7 +451,8 @@ public class TypeScriptAngularClientCodegen extends AbstractTypeScriptClientCode
 
     @Override
     public String toModelFilename(String name) {
-        return camelize(toModelName(name), true);
+        String newName = camelize(toModelName(name), true);
+        return Character.toUpperCase(newName.charAt(0)) + newName.substring(1);
     }
 
     @Override
